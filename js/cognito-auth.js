@@ -13,8 +13,8 @@ var WildRydes = window.WildRydes || {};
     var userPool;
 
     if (!(_config.cognito.userPoolId &&
-          _config.cognito.userPoolClientId &&
-          _config.cognito.region)) {
+        _config.cognito.userPoolClientId &&
+        _config.cognito.region)) {
         $('#noCognitoMessage').show();
         return;
     }
@@ -73,7 +73,12 @@ var WildRydes = window.WildRydes || {};
     function signin(email, password, onSuccess, onFailure) {
         var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
             Username: toUsername(email),
-            Password: password
+            Password: password,
+            options: {
+                clientMetadata: {
+                    secretHash: "IyW/XXX+pvk="
+                }
+            }
         });
 
         var cognitoUser = createCognitoUser(email);
