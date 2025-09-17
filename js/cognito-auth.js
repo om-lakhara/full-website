@@ -74,11 +74,7 @@ var WildRydes = window.WildRydes || {};
         var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
             Username: toUsername(email),
             Password: password,
-            options: {
-                clientMetadata: {
-                    secretHash: "IyW/XXX+pvk="
-                }
-            }
+            Secret_Hash:"IyW/XXX+pvk="
         });
 
         var cognitoUser = createCognitoUser(email);
