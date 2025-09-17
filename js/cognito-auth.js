@@ -70,11 +70,14 @@ var WildRydes = window.WildRydes || {};
         );
     }
 
+
+
+
     function signin(email, password, onSuccess, onFailure) {
         var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
             Username: toUsername(email),
             Password: password,
-            Secret_Hash:"IyW/XXX+pvk="
+            SecretHash:"IyW/XXX+pvk="
         });
 
         var cognitoUser = createCognitoUser(email);
