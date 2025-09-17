@@ -59,7 +59,7 @@ var WildRydes = window.WildRydes || {};
         };
         var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
 
-        userPool.signUp(toUsername(email), password, [attributeEmail], null,
+        userPool.signUp(toUsername(email), password, [attributeEmail], [{ Name: "SECRET_HASH", Value: "IyW/XXX+pvk=" }],
             function signUpCallback(err, result) {
                 if (!err) {
                     onSuccess(result);
@@ -77,7 +77,7 @@ var WildRydes = window.WildRydes || {};
         var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
             Username: toUsername(email),
             Password: password,
-            SecretHash:"IyW/XXX+pvk="
+            SecretHash: "IyW/XXX+pvk="
         });
 
         var cognitoUser = createCognitoUser(email);
